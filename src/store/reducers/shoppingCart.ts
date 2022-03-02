@@ -9,7 +9,7 @@ type CartState = {
   counts: Record<number, number>
 }
 const defaultState: CartState = {
-  counts: JSON.parse(localStorage.getItem(LS_KEY) || "{}"),
+  counts: {}, // JSON.parse(localStorage.getItem(LS_KEY) || "{}") - if data should persist
 }
 
 /**
