@@ -1,10 +1,10 @@
-import { FC } from "react"
-import { Provider } from "react-redux"
 import { combineReducers, createStore } from "redux"
-import { productsReducer, ProductsState } from "./reducers/products"
+import { productsReducer } from "./reducers/products"
+import { cartReducer } from "./reducers/shoppingCart"
 
 const reducers = {
   products: productsReducer,
+  cart: cartReducer,
 }
 
 // type definition for store state
