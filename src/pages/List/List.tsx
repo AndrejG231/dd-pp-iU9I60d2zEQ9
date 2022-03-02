@@ -1,5 +1,8 @@
+import { useProductsData } from "../../api/products-data"
+
 const List = () => {
-  return <div>List</div>
+  const { products, loading, error } = useProductsData()
+  return <div>{JSON.stringify(products)}</div>
 }
 
 export { List }
