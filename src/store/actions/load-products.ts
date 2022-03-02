@@ -2,7 +2,7 @@
  * This file contains actions related to fetching products data
  */
 
-import { ProductResponse } from "../../types/product"
+import { Product } from "../../types/product"
 import {
   ERROR,
   ErrorAction,
@@ -20,7 +20,7 @@ export const loadProducts = (): LoadAction => ({ type: LOAD })
 /**
  * Store successfully loaded products data
  */
-export const sucessLoadProducts = (data: ProductResponse): SuccessAction => ({
+export const successLoadProducts = (data: Product[]): SuccessAction => ({
   type: SUCCESS,
   data,
 })

@@ -1,4 +1,4 @@
-import { ProductResponse, ProductsMap } from "../../types/product"
+import { Product, ProductsMap } from "../../types/product"
 
 /**
  * Products reducer
@@ -29,7 +29,7 @@ export type LoadAction = {
 }
 export type SuccessAction = {
   type: typeof SUCCESS
-  data: ProductResponse
+  data: Product[]
 }
 export type ErrorAction = {
   type: typeof ERROR
@@ -49,7 +49,7 @@ const productsReducer = (
       return { ...state, loading: true }
     case SUCCESS:
       // Map data to { id: product } object
-      const products = action.data.products.reduce(
+      const products = action.data.reduce(
         (acc, val) => ({
           ...acc,
           [val.id]: val,
