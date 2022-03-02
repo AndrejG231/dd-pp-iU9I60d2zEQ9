@@ -2,7 +2,7 @@
  * Handle fetching of products data
  */
 
-import { useLayoutEffect, useRef } from "react"
+import { useCallback, useLayoutEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {
   errorLoadProducts,
@@ -31,7 +31,7 @@ const useProductsData = () => {
 
   const dispatch = useDispatch()
 
-  const fetchProductData = async () => {
+  const fetchProductData = useCallback(async () => {
     // loading => true
     mutable.loading = true
     dispatch(loadProducts())
@@ -47,7 +47,7 @@ const useProductsData = () => {
     } catch (err) {
       dispatch(errorLoadProducts())
     }
-  }
+  }, [dispatch])
 
   // Fetch data, if not loaded
   // instantly display loading on screen
@@ -57,7 +57,7 @@ const useProductsData = () => {
       return
 
     fetchProductData()
-  }, [loading, error, dispatch])
+  }, [fetchProductData, loading, error, products, dispatch])
 
   return { loading, error, products }
 }
