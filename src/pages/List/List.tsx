@@ -1,18 +1,18 @@
 import { ChangeEventHandler, useCallback, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useProductsData } from "../../api/products-data"
 import Fallback from "../../components/Fallback"
 import { ProductCard } from "../../components/ProductCard"
+import { useCartContent } from "../../hooks/store"
 import { addToCart, removeFromCart } from "../../store/actions/manage-cart"
-import { State } from "../../store/store"
 
 const List = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const { products, loading, error } = useProductsData()
-  const counts = useSelector((state: State) => state.cart.counts)
+  const cartContent = useCartContent()
 
   // Cart actions
   const increaseInCart = useCallback(
@@ -46,7 +46,7 @@ const List = () => {
               key={id}
               name={name}
               price={price}
-              count={~~counts[id]}
+              count={~~cartContent[id]}
               onPlusClick={() => increaseInCart(id)}
               onMinusClick={() => decreaseInCart(id)}
             />
