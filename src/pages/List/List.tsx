@@ -6,10 +6,10 @@ import Fallback from "../../components/Fallback"
 import { ProductCard } from "../../components/ProductCard"
 import { useCartContent } from "../../hooks/store"
 import { addToCart, removeFromCart } from "../../store/actions/manage-cart"
+import { Items, SearchBox, SearchIcon, SearchInput } from "./styles"
 
 const List = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const { products, loading, error } = useProductsData()
   const cartContent = useCartContent()
@@ -33,11 +33,18 @@ const List = () => {
   )
 
   return (
-    <div>
-      <input type="text" value={searchStr} onChange={handleSearch} />
-      <button onClick={() => navigate("/cart")}>Shopping Cart</button>
-      {/* Display loading/error screen */}
-      <Fallback loading={loading} error={error}>
+    // Do not render without loaded data
+    <Fallback loading={loading} error={error}>
+      <SearchBox>
+        <SearchIcon />
+        <SearchInput
+          placeholder="Search"
+          type="text"
+          value={searchStr}
+          onChange={handleSearch}
+        />
+      </SearchBox>
+      <Items>
         {Object.values(products).map(({ id, name, price }) => {
           // Filter out unmatched
           if (!name.includes(searchStr)) return null
@@ -52,8 +59,8 @@ const List = () => {
             />
           )
         })}
-      </Fallback>
-    </div>
+      </Items>
+    </Fallback>
   )
 }
 
