@@ -2,14 +2,11 @@
  * Stores information about quantity of items in shopping cart
  */
 
-// key for local storage access
-export const LS_KEY = "shopping-cart-counts"
-
 type CartState = {
   counts: Record<number, number>
 }
 const defaultState: CartState = {
-  counts: {}, // JSON.parse(localStorage.getItem(LS_KEY) || "{}") - if data should persist
+  counts: {},
 }
 
 /**

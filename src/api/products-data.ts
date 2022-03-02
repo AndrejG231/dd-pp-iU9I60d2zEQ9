@@ -16,11 +16,6 @@ import { ProductResponse } from "../types/product"
 // Currently there is not api present, so fetch mock data from public
 const URL = process.env.PUBLIC_URL + "/data.json"
 
-// Mutable object to preserve one instant loading state
-const mutable = {
-  loading: false,
-}
-
 /**
  * Custom hook, that provides product data in multiple places over the app, while fetching only once
  */
@@ -33,7 +28,6 @@ const useProductsData = () => {
 
   const fetchProductData = useCallback(async () => {
     // loading => true
-    mutable.loading = true
     dispatch(loadProducts())
     try {
       const response = await axios.get<ProductResponse>(URL)
@@ -53,8 +47,7 @@ const useProductsData = () => {
   // instantly display loading on screen
   useLayoutEffect(() => {
     // dont fetch if already fetching, error, or data is loaded
-    if (loading || mutable.loading || error || Object.keys(products).length > 0)
-      return
+    if (loading || error || Object.keys(products).length > 0) return
 
     fetchProductData()
   }, [fetchProductData, loading, error, products, dispatch])
