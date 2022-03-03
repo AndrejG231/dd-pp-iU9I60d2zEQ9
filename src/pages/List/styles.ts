@@ -31,6 +31,8 @@ export const SearchInput = styled.input`
 
 export const Items = styled.div`
   display: grid;
-  margin: 10px 30px;
+  gap: 15px;
+  margin: 15px auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 1245px;
 `

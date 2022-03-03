@@ -1,4 +1,5 @@
 import { memo } from "react"
+import { Amount, Button, Buttons, Card, Price, Title } from "./styles"
 
 interface Props {
   name: string
@@ -16,12 +17,15 @@ interface Props {
 const ProductCard = memo<Props>(
   ({ name, price, count, onPlusClick, onMinusClick }) => {
     return (
-      <div>
-        {name}: {price}
-        <button onClick={onPlusClick}>+</button>
-        {count}
-        <button onClick={onMinusClick}>-</button>
-      </div>
+      <Card>
+        <Title>{name}</Title>
+        <Price>${price.toFixed(2)}</Price>
+        <Buttons>
+          <Button onClick={onPlusClick}>+</Button>
+          <Amount>{count < 10 ? "0" + count : count}</Amount>
+          <Button onClick={onMinusClick}>-</Button>
+        </Buttons>
+      </Card>
     )
   }
 )
