@@ -33,6 +33,18 @@ export const Items = styled.div`
   display: grid;
   gap: 15px;
   margin: 15px auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 1245px;
+  grid-template-columns: 1fr;
+  width: 290px;
+  @media screen and (min-width: 724px) {
+    grid-template-columns: 1fr 1fr;
+    width: 635px;
+  }
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 940px;
+  }
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 1245px;
+  }
 `

@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Card = styled.div`
   width: 290px;
-  height: 160px;
+  min-height: 160px;
   border-radius: 10px;
   position: relative;
   background: ${({ theme }) => theme.colors.grayDarkest};
