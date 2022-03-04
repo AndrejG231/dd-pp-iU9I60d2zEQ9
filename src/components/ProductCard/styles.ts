@@ -6,11 +6,12 @@ export const Card = styled.div`
   border-radius: 10px;
   position: relative;
   background: ${({ theme }) => theme.colors.grayDarkest};
+  padding-bottom: 55px;
 `
 
 export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.white};
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 5px 10px;
   text-align: center;
 `
