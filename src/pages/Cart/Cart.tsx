@@ -7,6 +7,18 @@ import { useProductsData } from "../../api/products-data"
 import Fallback from "../../components/Fallback"
 import { useCartContent } from "../../hooks/store"
 import { parseCartContent } from "../../util/cart-content"
+import {
+  Table,
+  TableHead,
+  TableHeadRow,
+  TableFootRow,
+  TableRow,
+  TableVal,
+  Wrapper,
+  TableTotal,
+  TableTotalVal,
+  ShopButton,
+} from "./styles"
 
 const Cart = () => {
   const { products, loading, error } = useProductsData()
@@ -17,38 +29,39 @@ const Cart = () => {
   const { total, items } = parseCartContent(products, cartContent)
 
   return (
-    <div>
+    <Wrapper>
       <Fallback loading={loading} error={error}>
-        <table>
+        <Table>
           <thead>
-            <tr>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Total</th>
-            </tr>
+            <TableHeadRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Amount</TableHead>
+              <TableHead>Total</TableHead>
+            </TableHeadRow>
           </thead>
           <tbody>
             {items.map(({ id, name, amount, price }) => {
               return (
-                <tr key={id}>
-                  <th>{name}</th>
-                  <th>{amount}</th>
-                  <th>{price.toFixed(2)}</th>
-                </tr>
+                <TableRow key={id}>
+                  <TableVal>{name}</TableVal>
+                  <TableVal>{amount}</TableVal>
+                  <TableVal>{price.toFixed(2)}</TableVal>
+                </TableRow>
               )
             })}
           </tbody>
           <tfoot>
-            <tr>
-              <td></td>
-              <td>Total: </td>
-              <td>{total.toFixed(2)}</td>
-            </tr>
+            <TableFootRow>
+              <TableTotal>Total: </TableTotal>
+              <TableTotalVal>{total.toFixed(2)}</TableTotalVal>
+            </TableFootRow>
           </tfoot>
-        </table>
-        <button onClick={() => navigate("/")}>Continue shopping.</button>
+        </Table>
+        <ShopButton onClick={() => navigate("/")}>
+          Continue shopping.
+        </ShopButton>
       </Fallback>
-    </div>
+    </Wrapper>
   )
 }
 
