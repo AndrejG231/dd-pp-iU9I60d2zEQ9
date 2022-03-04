@@ -15,9 +15,9 @@ Shopping cart frontend UI.
   `| -- core` - core files - App setup, routes, theme, global styles  
   `| -- hooks` - custom hooks  
   `| -- pages` - folders, including page component and page related styles, utils, types, etc..  
-  `| -- store` - redux actions, reducers
-  `| -- types` - global types and type declarations 
-  `| -- util` - utility functions
+  `| -- store` - redux actions, reducers   
+  `| -- types` - global types and type declarations  
+  `| -- util` - utility functions  
   
 #### Startup
   - clone repository
