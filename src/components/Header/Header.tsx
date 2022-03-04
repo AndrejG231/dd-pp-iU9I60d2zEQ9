@@ -8,7 +8,7 @@ const Header = () => {
     <header>
       <Navbar>
         <Title onClick={() => navigate("/")}>Grocery Store</Title>
-        <CartButton onClick={() => navigate("/")}>
+        <CartButton onClick={() => navigate("/cart")}>
           <CartText>Shopping Cart</CartText>
           <CartIcon />
         </CartButton>
